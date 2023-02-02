@@ -1,0 +1,29 @@
+{% extends 'interface/change_profilelayout.html' %}
+
+
+{% block body %}
+<body>
+    <div class="wrapper">
+        <div class="user-icon">
+            <i class='bx bx-user-circle user'></i>
+            <p>
+                {{ user.username }}
+            </p> 
+        </div>
+    <form method="POST" action="change_profile">
+        {% csrf_token %}
+        <div class="credentials">
+            <input type="text" id="name" name="oldname" placeholder="username">
+            <br>
+            <input type="password" id="pas" name="oldpas" placeholder="password">
+            <br>
+            <input type="text" id="newname" name="newname" placeholder="new username">
+            <br>
+            <input type="password" id="newpas" name="newpas" placeholder="new pasword">
+            <br>
+            <button type="submit" id="save">save</button>
+        </div>
+    </form>
+    </div>
+</body>
+{% endblock %}

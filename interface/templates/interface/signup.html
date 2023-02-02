@@ -1,0 +1,43 @@
+{% extends 'interface/signuplayout.html' %}
+
+
+
+{% block body %}
+<body>
+    <div class="signup-wrapper">
+        <form id="new-user" action="createuser_view" method="POST">
+            {% csrf_token %}
+        <div class="fields">
+            <i class='bx bx-user user'></i>
+            <input type="text" id="first-name" placeholder="first name" name="firstname" required>
+        </div>
+        <div class="fields2">
+            <i class='bx bx-user user'></i>
+            <input type="text" id="second-name" placeholder="Last name" name="secondname" required>
+        </div>
+        <div class="fields2">
+            <i class='bx bx-envelope mail'></i>
+            <input type="text" id="Email-address" placeholder="Email" name="Email" required>
+        </div>
+        <div class="fields3">
+            <i class='bx bx-user user'></i>
+            <input type="text" id="password" placeholder="username" name="username" required>
+        </div>
+        <div class="fields3">
+            <i class='bx bx-key pas'></i>
+            <input type="password" id="password" placeholder="password" name="pasword" required>
+        </div>
+        <div class="check">
+            <input type="checkbox" value="agreements" name="agreements"><span class ="terms"> I agree to conditions & terms</span>
+        </div>
+        <div class="submit-signup-form">
+            <button type="submit" id="sign-submit">sign up</button>
+        </div>
+        <div class="check2">
+            <span class ="terms"> have an account? <a href="login_view">login</a></span>
+        </div>
+    </form>
+    </div>
+</body>
+
+{% endblock %}

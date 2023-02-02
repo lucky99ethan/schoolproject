@@ -1,0 +1,41 @@
+{% extends 'interface/loginlayout.html' %}
+
+{% block body %}
+<body>
+    
+    <div class="login-wrapper">
+        <div class="login-logo">
+            <i class='bx bxs-user-circle circle'></i>
+        </div>
+        <div class="head-name">
+            <span class="head"> Login</span>
+        </div>
+    <form id="account-login" action="login_view" method="POST">
+            {% csrf_token %}
+
+        <div class="fields">
+            <i class='bx bx-user user'></i>
+            <input type="text" id="username" placeholder="username..." name="username" required>
+        </div>
+        <div class="fields2">
+            <i class='bx bx-key pas'></i>
+            <input type="password" id="password" placeholder="password..." name="password" required>
+        </div>
+        <div class="submit-login-form">
+            <button type="submit" id="login-submit">Login</button>
+        </div>
+        <div class="forgot-pass">
+            <a href="#password" id="pas-text">Forgot password?</a>
+        </div>
+        <div class="check2">
+            <span class ="terms"> Don't have an account? <a href="signup">signup</a></span>
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+        </div>
+        
+    </form>
+        
+    </div>   
+</body>
+{% endblock %}

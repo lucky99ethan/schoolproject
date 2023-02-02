@@ -1,0 +1,191 @@
+{% extends 'interface/layout.html' %}
+{% load static %}
+
+
+{% block body %}
+<body>
+    <div class="motiv">
+        <div class="moto">
+            <h2>Made for creators</h2>
+        </div>
+    </div>
+    <section class="overlay"></section>
+    <div class="about">
+        <div class="info">
+            <article>
+                <h3>Best Art,</h3>
+                We feature the best art from all creators, around the world.
+            </article>
+            <br>
+            <form id="active-user" action="login_view">
+                {% csrf_token %}
+                <div class="login">
+                    <i class='bx bx-log-in icon1'></i>
+                    <button type="submit" id="log">login</button>
+                </div>
+            </form>
+            <form id="new-user" action="signup">
+                {% csrf_token %}
+                <div class="sign-up">
+                    <i class='bx bxs-user-plus icon1'></i>
+                    <button type="submit" id="sign">sign up</button>
+                </div>
+            </form>
+        </div>  
+    </div>
+    <div class="feed">
+        <div class="photos">
+            <div class="Feed-items">
+                <h4>Trending</h4>
+              <section>
+                <img class="feed-post" src="{% static 'images/lifering.jpg' %}" alt="flower" >
+                <img class="feed-post" src="{% static 'images/outstand.jpg' %}" alt="flower" >
+                <img class="feed-post" src="{% static 'images/thewait.GIF' %}" alt="flower" >
+                <img class="feed-post" src="{% static 'images/dreams.jpg' %}" alt="flower" >
+              </section>
+            </div>
+        </div>
+    </div>
+    <div class="feed2">
+        <div class="photos">
+            <div class="Trend-items">
+                <h4>community</h4>
+                <section>
+                    <img class="trend-post" src="{% static 'images/lifering.jpg' %}" alt="flower" >
+                    <img class="trend-post" src="{% static 'images/outstand.jpg' %}" alt="flower" >
+                    <img class="trend-post" src="{% static 'images/thewait.GIF' %}" alt="flower" >
+                    <img class="trend-post" src="{% static 'images/dreams.jpg' %}" alt="flower" >
+                </section>
+            </div>
+        </div>
+    </div>
+    <div class="page-links">
+        <form id="news-form" onsubmit="Send(); reset(); return false">
+        <div class="email-news">
+            <h6>Newsletter</h6>
+            <input type="text" id="email-letter" placeholder="your email.."><br>
+            <button type="submit" id="submit-news">Send</button>
+        </div>
+        </form>
+        <div class="theme-change">
+            <button id="theme" onclick="mode()"><i class='bx bx-bulb'></i></button>
+        </div>
+    </div>
+    <footer>
+        <div class="credits">
+            <div class="copyright">
+                copyright|2022 
+            </div>
+        </div>
+    </footer>
+    <nav>
+        <div class="logo">
+            <i class='bx bx-menu menu-icon'></i>
+            <span class="logo-name">
+                blanco
+            </span>
+        </div>
+        <div class="side-bar">
+            <div class="logo">
+                <i class='bx bx-menu menu-icon'></i>
+                <span class="logo-name">
+                    blanco
+                </span>
+            </div>
+            <div class="sidebar-items">
+               <ul class="lists">
+                <li class="list">
+                    <a href="#home" class="nav-link"><i class='bx bx-store-alt icon' ></i>
+                    <span class="link">marketplace</span></a>
+                </li>
+                <li class="list">
+                    <a href="#home" class="nav-link"><i class='bx bx-image-alt icon'></i>
+                    <span class="link">prints</span></a>
+                </li>
+                <li class="list">
+                    <a href="#home" class="nav-link"><i class='bx bx-group icon' ></i>
+                    <span class="link">artists</span></a>
+                </li>
+                <li class="list">
+                    <a href="#home" class="nav-link"><i class='bx bx-buildings icon' ></i>
+                    <span class="link">Developers</span></a>
+                </li>
+               </ul>
+            </div>
+        </div>  
+    </nav>
+    <script>
+            function mode() {
+                const light = document.body;
+                light.classList.toggle("dark-mode");
+            } 
+    </script>
+    <script type="text/javascript">
+        const navbar = document.querySelector('nav'),
+        menubtns = document.querySelectorAll('.menu-icon'),
+        overlay = document.querySelector('.overlay');
+
+
+        menubtns.forEach(function (menubtn) {
+            menubtn.addEventListener('click', function(){
+                navbar.classList.toggle('open');
+            });
+        });
+
+        overlay.addEventListener('click',function(){
+            navbar.classList.remove('open');
+        });
+    </script>
+    <script>
+        var myIndex = 0;
+        carousel1 ();
+
+        function carousel1() {
+            var i ;
+            var x = document.getElementsByClassName('feed-post');
+            for (i=0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {
+                myIndex = 1
+            }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel1, 3000)
+        }
+    </script>
+    <script>
+        var myIndex = 0;
+        carousel ();
+
+        function carousel() {
+            var i ;
+            var x = document.getElementsByClassName('trend-post');
+            for (i=0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {
+                myIndex = 1
+            }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 3050)
+        }
+    </script>
+    <script>
+        function Send() {
+                Email.send({
+        Host : "smtp.elasticmail.com",
+        Username : "suleiman4a@gmail.com",
+        Password : "C27B8BE9E179EADB040A2444BEA3B3F8218C",
+        To : 'jabariestate@gmail.com',
+        From : document.getElementById('email-letter').value,
+        Subject : "Email informantion",
+        Body : 'Email: '+ document.getElementById('email-letter').value
+    }).then(
+    message => alert('sent successful')
+    );
+        }
+    </script>
+</body>
+{% endblock %}

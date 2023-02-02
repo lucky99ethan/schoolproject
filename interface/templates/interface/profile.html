@@ -1,0 +1,177 @@
+{% extends 'interface/profilelayout.html' %}
+{% load static %}
+
+
+
+{% block body %}
+
+    <div class="post">
+        <div class="user">
+            <div class="welcome">
+                <p id="username">Hello, {{ user.username }}</p>
+            </div>
+            <div class="profile-info">
+                <div class="QNS">
+                    <p> Followers <strong> 0 </strong></p>
+                </div> 
+                <div class="QNS">
+                    <p> Following <strong> 0 </strong></p>
+                </div> 
+                <div class="QNS">
+                    <a href="change_profile"><p>Edit profile</p></a>
+                </div>
+            </div>   
+        </div>
+        <div class="top-nav">
+            <nav>
+                <div class="logo">
+                    <i class='bx bx-menu menu-icon'></i>
+                    <span id="logo-name1">
+                        blanco
+                    </span>
+                </div>
+                <div class="side-bar">
+                    <div class="logo">
+                        <i class='bx bx-menu menu-icon'></i>
+                        <span id="logo-name">
+                            blanco
+                        </span>
+                    </div>
+                    <div class="sidebar-items">
+                       <ul class="lists">
+                        <li class="list">
+                            <a href="#home" class="nav-link"><i class='bx bxs-home icon' ></i>
+                            <span class="link">insights</span></a>
+                        </li>
+                        <li class="list">
+                            <a href="#home" class="nav-link"><i class='bx bx-store-alt icon' ></i>
+                            <span class="link">marketplace</span></a>
+                        </li>
+                        <li class="list">
+                            <a href="#home" class="nav-link"><i class='bx bx-image-alt icon'></i>
+                            <span class="link">prints</span></a>
+                        </li>
+                        <li class="list">
+                            <a href="#home" class="nav-link"><i class='bx bx-group icon' ></i>
+                            <span class="link">artists</span></a>
+                        </li>
+                        <li class="list">
+                            <a href="#home" class="nav-link"><i class='bx bx-buildings icon' ></i>
+                            <span class="link">studios</span></a>
+                        </li>
+                        <li class="list">
+                            <a href="#home" class="nav-link"><i class='bx bxl-patreon icon' ></i>
+                            <span class="link">patreon</span></a>
+                        </li>
+                        <li class="list">
+                            <a href="#home" class="nav-link"><i class='bx bxl-patreon icon' ></i>
+                            <span class="link">Ourteam</span></a>
+                        </li>
+                        <li class="list">
+                            <a href="#home" class="nav-link"><i class='bx bxl-patreon icon' ></i>
+                            <span class="link">support</span></a>
+                        </li>
+                       </ul>
+                    </div>
+                </div>  
+            </nav>
+{% if request.user.is_authenticated %}
+        <form method="POST" action="logout_view">
+            {% csrf_token %}
+            <div class="lists">
+                <ul class="list">
+                    <li class="items">
+                        <button type="submit" id="out">logout</button>
+                    </li>
+                </ul>
+            </div>
+        </form>
+{% endif %}
+            <div class="list-search">
+                <ul class="search">
+                    <li class="search-bar">
+                        <input id="bar" type="text" name="search" placeholder="search">
+                        <button class="searchbtn"><i class='bx bx-search-alt-2 lens'></i></button>
+                    </li>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+<div class="blanco">
+    <div class="intro">
+        <label id="new"> <strong id="head">Welcome </strong>, have a good time!</label>
+    </div>
+    <div class="QNS">
+        <a href="about">Who are we?</a>
+    </div>
+    <div class="QNS">
+        <a href="#link">Our Team</a>
+    </div>
+    <div class="QNS">
+        <a href="#link">Support</a>
+    </div>
+</div>
+<div class="wrapper">
+            <div class="post-sys">
+                <div class="image-post">
+                    <img class="image" src="{% static 'images/outstand.jpg' %}" alt="oustand" >
+                    <label class="descript"><h5>by @beeple_crap</h5>
+                        <br>
+                        everydays render
+                        beeple is one of top 3D everyday render best artists in the world, checkout
+                        his instagram portfolio.
+                    </label>
+                </div>
+                    <div class="likes">
+                        <button id ="like">Like</button>
+                        <h4 id="like_count">0</h4>
+                    </div>  
+            </div>
+            <div class="post-sys">
+                <div class="image-post">
+                    <img class="image" src="{% static 'images/inverted.jpg' %}" alt="oustand" >
+                    <label class="descript"><h5>by @beeple_crap</h5>
+                        <br>
+                        everydays render
+                        beeple is one of top 3D everyday render best artists in the world, checkout
+                        his instagram portfolio.
+                    </label>
+                </div>
+                    <div class="likes">
+                        <button id ="like">Like</button>
+                        <h4 id="like_count">0</h4>
+                    </div>  
+            </div>
+</div>
+   <script type="text/javascript">
+        const navbar = document.querySelector('nav'),
+        menubtns = document.querySelectorAll('.menu-icon'),
+        overlay = document.querySelector('.overlay');
+
+
+        menubtns.forEach(function (menubtn) {
+            menubtn.addEventListener('click', function(){
+                navbar.classList.toggle('open');
+            });
+        });
+
+        overlay.addEventListener('click',function(){
+            navbar.classList.remove('open');
+        });
+    </script>
+<script>
+     var x = document.getElementById('like');
+       let count = 0;
+       function counter() {
+        count += 1;
+        document.querySelectorAll('h4').innerHTML = count;
+       }
+       x.onclick = counter; 
+</script>
+<script>
+ document.getElementById('out').onclick = function(){
+    alert('do you want to logout?');
+ }
+</script>
+{% endblock %}
