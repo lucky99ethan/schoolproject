@@ -7,7 +7,7 @@ from .models import *
 
 admin.site.register(Like)
 
-admin.site.register(login)
+admin.site.register(User)
 
 admin.site.register(AddUser)
 

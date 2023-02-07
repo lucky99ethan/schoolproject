@@ -3,14 +3,16 @@ from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth.models import User
-from .models import Like
+from .models import *
 from django.views.decorators.cache import cache_control
 from django.contrib.auth.decorators import login_required
+from interface.models import AddUser
+from .models import User
 
 
 
 
-# Create your views here.
+# Cr eate your views here.
 
 
 def index(request):
@@ -26,44 +28,42 @@ def profile(request):
     return render(request, "interface/profile.html")
 
 
-
 def login_view(request):
+    error = None
     if request.method == 'POST':
         user_name = request.POST.get('username')
         pass_word = request.POST.get('password')
+        try:
+            user = User.objects.get(username=user_name, password=pass_word)
+            # Do something with the user data
+        except User.DoesNotExist:
+            # Handle the case where the user doesn't exist
+            error = "Invalid login"
+        return redirect('home_view')
+    return render(request, 'interface/login.html', {'error': error})
 
-        user = authenticate(request, username = user_name,
-        password = pass_word)
-        
-
-        if user is None:
-            context = {"error": "invalid username or password."}
-            return render(request, "interface/login.html", context)
-        
-        else:
-            login(request, user)
-            return redirect("profile")
-
-
-
-    return render(request, "interface/login.html", {})
     
 def createuser_view(request):
     if request.method == 'POST':
-        Firstname_ = request.POST.get('firstname')
-        Lastname_ = request.POST.get('secondname')
-        Email_ = request.POST.get('Email')
-        Username_ = request.POST.get('username')
-        Pasword_ = request.POST.get('pasword') 
-
-        user = User.objects.create_user(username = Username_, password = Pasword_, email = Email_,first_name = Firstname_, last_name = Lastname_)
-
-        user.save()
-
+      if request.POST.get('first_name') and request.POST.get('last_name') and request.POST.get('pass_word') and request.POST.get('user_name') and request.POST.get('Email'):
+        saverrecord= AddUser()
+        saverrecord.first_name=request.POST.get('first_name')
+        saverrecord.last_name=request.POST.get('last_name')
+        saverrecord.pass_word=request.POST.get('pass_word')
+        saverrecord.user_name=request.POST.get('user_name')
+        saverrecord.Email=request.POST.get('Email')
+        saverrecord.save()
+        return render(request, "interface/login.html", {})
+    
+    else: 
+        return render(request, "interface/index.html", {})
+     
+     
+     
         
 
- 
-    return render(request, "interface/login.html", {})
+    
+
 
 
 

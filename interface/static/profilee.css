@@ -21,7 +21,7 @@ body{
     margin-left: 0.3%;
     padding: 0;
     width:19.8%;
-    height: 370px;
+    height: 460px;
     background-color: #333;
 }
 .user .QNS{
@@ -333,6 +333,25 @@ nav.open .side-bar{
     background-color: #333;
     cursor: pointer;
     transition: background-color ease 0.15s;
+}
+#addpost{
+    padding: 12px;
+    outline: none;
+    border: none;
+    margin-left: 5rem;
+    color: #FFF;
+    background-color:#707070;
+    border-radius: 10px;
+    margin-top: 3rem;
+}
+#addpost:active{
+    opacity: 0.5;
+    transition: all ease;
+}
+#addpost:hover{
+    background-color: #DADADA;
+    cursor: pointer;
+    color: #141414;
 }
 .list .nav-link:active{
     opacity: 50%;

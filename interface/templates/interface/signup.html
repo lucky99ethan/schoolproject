@@ -9,11 +9,11 @@
             {% csrf_token %}
         <div class="fields">
             <i class='bx bx-user user'></i>
-            <input type="text" id="first-name" placeholder="first name" name="firstname" required>
+        <input type="text" id="first-name" placeholder="first name" name="first_name"  required>
         </div>
         <div class="fields2">
             <i class='bx bx-user user'></i>
-            <input type="text" id="second-name" placeholder="Last name" name="secondname" required>
+            <input type="text" id="second-name" placeholder="Last name" name="last_name"  required>
         </div>
         <div class="fields2">
             <i class='bx bx-envelope mail'></i>
@@ -21,11 +21,11 @@
         </div>
         <div class="fields3">
             <i class='bx bx-user user'></i>
-            <input type="text" id="password" placeholder="username" name="username" required>
+            <input type="text" id="password" placeholder="username" name="user_name"  required>
         </div>
         <div class="fields3">
             <i class='bx bx-key pas'></i>
-            <input type="password" id="password" placeholder="password" name="pasword" required>
+            <input type="password" id="password" placeholder="password" name="pass_word" required>
         </div>
         <div class="check">
             <input type="checkbox" value="agreements" name="agreements"><span class ="terms"> I agree to conditions & terms</span>
@@ -34,10 +34,10 @@
             <button type="submit" id="sign-submit">sign up</button>
         </div>
         <div class="check2">
-            <span class ="terms"> have an account? <a href="login_view">login</a></span>
+            <span class ="terms"> have an account? <a href="index">Back</a></span>
         </div>
-    </form>
-    </div>
+    </form>    
+ </div>
 </body>
 
 {% endblock %}

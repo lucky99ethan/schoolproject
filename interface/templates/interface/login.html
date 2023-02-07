@@ -1,7 +1,7 @@
 {% extends 'interface/loginlayout.html' %}
 
 {% block body %}
-<body>
+<body> 
     
     <div class="login-wrapper">
         <div class="login-logo">
@@ -35,6 +35,12 @@
         </div>
         
     </form>
+    <form action="index" method="POST">
+        {% csrf_token %}
+    <div class="backbutton">
+            <button id="back">back</button>
+    </div>
+</form> 
         
     </div>   
 </body>
